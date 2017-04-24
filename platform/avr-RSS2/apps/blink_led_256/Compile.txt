@@ -1,0 +1,6 @@
+cd /cygdrive/c
+which avrdude
+export PATH=/cygdrive/c/WinAVR/bin:$PATH
+make blink_led_256
+avr-objcopy blink_led.avr-RSS2 -j .text -j .data -O ihex blink_led_256.hex
+avrdude -p m256rfr2 -c avr109 -P /dev/ttyUSB0 -b 38400 -e -U flash:w:blink_led_256.hex

@@ -1,0 +1,20 @@
+
+Pluto example application.
+-------------------------
+
+* Yellow LED flashes when Rime broadcast with MCU voltage and MCU temperature 
+  is transmitted
+
+* Read LED flashes when Rime broadcast is received
+
+* Data is alo printed via UART. 38400 bps, 2 stopbits, No flowcontrol.
+
+Consult the code.
+
+Make:
+make bc hex TARGET=avr-pluto
+
+Program with serial bootloader. (TTL-USB cable)
+
+avrdude -p m128rfa1 -c avr109 -P /dev/ttyUSB0 -b 38400 -e -U flash:w:bc.hex
+
